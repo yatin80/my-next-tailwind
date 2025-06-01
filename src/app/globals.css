@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fff7f7;
+  --foreground: #171717;
+  --font-poppins-sans: 'Poppins', sans-serif;
+  --color-primary: #fbbf24;
+  /* amber-400 */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  /* --font-mono: var(--font-geist-mono); */
+  --font-sans: var(--font-poppins-sans);
+
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+@layer base{
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: var(--font-poppins-sans);
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-3.5 py-2 cursor-pointer;
+  }
+}
+
+
+
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  @apply text-amber-400;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--color-primary) !important;
+}
+
+/* :global(.swiper-pagination-bullet-active) {
+  @apply bg-amber-400;
+} */
