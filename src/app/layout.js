@@ -4,6 +4,8 @@ import "./globals.css";
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import Header from "./components/header/Header";
+import { UserContextProvider } from "./context/UserContext";
+import Footer from "./components/footer/Footer";
 // import { ThemeContext } from "./context/context";
 
 
@@ -31,16 +33,27 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
+  const isAuthPage = true;
+  
+
   return (
     <html lang="en" className="h-full">
       <body className={`${geistSans.variable} ${poppins.variable} antialiased h-full`}>
         {/* <ThemeContext.Provider value={{ user: "John Doe" }}> */}
+        {/* {!isAuthPage && <Header />} */}
+        <UserContextProvider>
           <Header />
-          <main className="w-full h-[calc(100vh-96px)]">
+          {/* <main className="w-full h-[calc(100vh-96px)]"> */}
+          <main className="w-full min-h-[calc(100vh-364px)]">
             {children}
           </main>
+          <Footer />
+          </UserContextProvider>
         {/* </ThemeContext.Provider> */}
       </body>
     </html>
   );
 }
+
+

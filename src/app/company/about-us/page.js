@@ -1,9 +1,11 @@
-import React from 'react'
+"use client"
+import { UserContext } from '@/app/context/UserContext'
+import React, { useContext } from 'react'
 
-export const metadata = {
-    title: 'About Us',
-    description: 'About us page for the application',
-}
+// export const metadata = {
+//     title: 'About Us',
+//     description: 'About us page for the application',
+// }
 
 const listData = [
     {
@@ -23,9 +25,10 @@ const listData = [
     }
 ]
 export default function AboutUs() {
+    const {toggleMenu, setToggleMenu} = useContext(UserContext);
     return (
         <div className='container mx-auto p-5'>
-            <h1 className=''>About Us Page </h1>
+            {toggleMenu && <h1 className='text-3xl font-bold'>About Us Page </h1>}
             <div className='w-72 bg-white mt-5 rounded-lg shadow-md p-4 border-gray-100 border-1 flex items-center group'>
                 <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""
                     className='w-20 h-w-20 object-cover rounded-full'

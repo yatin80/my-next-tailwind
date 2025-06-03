@@ -83,30 +83,28 @@ const shopLookData = [
 
 export default function Home() {
   const [bestSellerData, setBestSellerData] = useState([]);
-    useEffect(() => {
-      const bestSellerData = () => {
-        fetch('https://dummyjson.com/products?limit=6')
-          .then(res => res.json())
-          .then(data => {
-            console.log('bestSellerData 123', data);
-            setBestSellerData(data.products);
-          });
-      }
-    
-      bestSellerData();
-    }, [])
+  useEffect(() => {
+    const bestSellerData = () => {
+      fetch('https://dummyjson.com/products?limit=6')
+        .then(res => res.json())
+        .then(data => {
+          console.log('bestSellerData 123', data);
+          setBestSellerData(data.products);
+        });
+    }
+
+    bestSellerData();
+  }, [])
   return (
     <>
-   
+
       <Banner />
       <Link href={'#bestSeller'} className="bg-white text-black rounded-full w-12 h-12 mx-auto  -mt-6 relative z-20 flex items-center justify-center shadow-lg hover:bg-gray-200 transition duration-300">
         <FontAwesomeIcon icon={faArrowDown} />
       </Link>
       {/* Best Seller Section */}
-      <div
-
-        className="py-25 px-7.5">
-        <div id="bestSeller">
+      <div className="py-25 px-7.5" id="bestSeller">
+        <div>
           <motion.div
             initial={{ opacity: 0, transform: "translateY(-100px)" }}
             whileInView={{ opacity: 1, transform: "translateY(0px)" }}
@@ -150,7 +148,7 @@ export default function Home() {
             <div className="relative group w-full lg:w-[460px] h-[575] after:absolute after:w-24 lg:after:w-40 after:h-24 lg:after:h-40 after:bg-orange-100 after:-bottom-5 lg:after:-bottom-18 after:-right-4 lg:after:-right-18 after:rounded-full after:z-0 rotate-3 hover:rotate-0 transition duration-300">
               <Link href={"#"} className="relative overflow-hidden z-10">
                 <Image
-                  src="/products/play-learn.png"
+                  src="https://images.pexels.com/photos/1148955/pexels-photo-1148955.jpeg"
                   alt="Product Image"
                   width={460}
                   height={575}
@@ -201,11 +199,12 @@ export default function Home() {
       <div className="py-25 px-7.5">
         <div className="w-full lg:w-2/3 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-7.5  items-center">
 
-          <div>
+          
             <div className="relative group w-full lg:w-[460px] h-[575] after:absolute after:w-24 lg:after:w-40 after:h-24 lg:after:h-40 after:bg-orange-100 after:-top-5 lg:after:-top-18 after:-left-4 lg:after:-left-18 after:rounded-full after:z-0 -rotate-3 hover:rotate-0 transition duration-300">
               <Link href={"#"} className="relative overflow-hidden z-10">
                 <Image
-                  src="/products/play-learn.png"
+                  // src="/products/play-learn.png"
+                  src="https://images.pexels.com/photos/462235/pexels-photo-462235.jpeg"
                   alt="Product Image"
                   width={460}
                   height={575}
@@ -214,7 +213,7 @@ export default function Home() {
               </Link>
 
             </div>
-          </div>
+         
           <div className="max-w-[300px]">
             <h2 className="text-3xl">Beds & Décor</h2>
             <p className="text-gray-600 mt-4.5">Add a touch of magic with charming wall art, rugs, lighting, and personalized decorations that make every child’s space feel special and inspiring</p>
@@ -223,8 +222,8 @@ export default function Home() {
 
       </div>
 
-      <div className="p-5 bg-orange-100 w-full">
-        <marquee className="text-orange-600 text-2xl">“The personalized décor made our son’s room extra special—amazing craftsmanship!” -  Linda</marquee>
+      <div className="p-5 bg-gray-300 w-full">
+        <marquee className="text-gray-700 text-2xl">“The personalized décor made our son’s room extra special—amazing craftsmanship!” -  Linda</marquee>
       </div>
 
 
@@ -243,9 +242,9 @@ export default function Home() {
         <div className="relative max-w-full lg:max-w-3/4 xl:max-w-1/2 px-7.5 lg:px-0">
           <h3 className="text-lg uppercase font-semibold">Vision Statement</h3>
           <h2 className="text-2xl lg:text-3xl mt-4.5">To create magical, safe, and inspiring spaces for children to grow, learn, and play—turning every room into a wonderland of creativity and comfort.</h2>
-          <a href="/company/about-us" className="bg-orange-700 text-white py-3 px-6 mt-5 tracking-[1px] cursor-pointer border border-orange-700 hover:bg-transparent hover:text-orange-700">
+          <a href="/company/about-us" className="bg-orange-700 inline-block text-white py-3 px-6 mt-5 tracking-[1px] cursor-pointer border border-orange-700 hover:bg-transparent hover:text-orange-700">
             About Us
-            </a>
+          </a>
         </div>
       </div>
 

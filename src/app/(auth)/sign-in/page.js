@@ -1,31 +1,105 @@
-import React from 'react'
+"use client"
+import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react'
+
 
 export default function SignIn() {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const getUser = () => {
+        fetch('https://dummyjson.com/auth/login', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: username,  // Use the form value instead of hardcoded
+                password: password,  // Use the form value instead of hardcoded
+                expiresInMins: 30,
+            })
+        })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error('Login failed');
+                }
+                return res.json();
+            })
+            .then(data => {
+                if (data.token) {
+                    localStorage.setItem('token', data.token);
+                    router.push('/dashboard');
+                } else {
+                    alert('Login failed. Please check your credentials.');
+                }
+            })
+            .catch(error => {
+                console.error('Login error:', error);
+                alert('Login failed. Please check your credentials.');
+            });
+    }
+
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // console.log(username, password);
+        getUser();
+
+
+    }
     return (
-        <div className="w-full lg:container mx-auto px-4 lg:px-8 py-6">
-            <h2 className="text-3xl font-bold text-black mb-5">Sign In</h2>
-            <div className='bg-white p-8'>
 
-
-                <form class="max-w-sm mx-auto">
-                    <div class="mb-5">
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                        <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required />
+        <div className="bg-white flex justify-center items-center h-screen">
+            <div className="w-2/3 h-screen hidden lg:block p-3">
+                <img src="https://images.pexels.com/photos/6956800/pexels-photo-6956800.jpeg" alt="Placeholder Image" className="object-cover w-full h-full rounded-lg" />
+            </div>
+            <div className="lg:p-28 md:p-52 sm:20 p-8 w-full lg:w-2/6">
+            <Link href="/" className='mb-6 inline-block border-1 border-black text-black px-3 py-2 cursor-pointer hover:bg-black hover:text-white' >
+                <FontAwesomeIcon icon={faHome} /> 
+            </Link>
+                <h1 className="text-2xl font-semibold mb-4">Login</h1>
+                <form onSubmit={handleSubmit}>
+                    <div className="mb-4">
+                        <label for="username" className="block text-gray-600">Username</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
                     </div>
-                    <div class="mb-5">
-                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-                        <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                    <div className="mb-4">
+                        <label for="password" className="block text-gray-800">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+                            autocomplete="off"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)} />
                     </div>
-                    <div class="flex items-start mb-5">
-                        <div class="flex items-center h-5">
-                            <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required />
+                    <div className='flex justify-between items-center mb-6 '>
+                        <div className="flex items-center">
+                            <input type="checkbox" id="remember" name="remember" className="text-red-500" />
+                            <label for="remember" className="text-green-900 ml-2">Remember Me</label>
                         </div>
-                        <label for="remember" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
+                        <div className="text-blue-500">
+                            <a href="#" className="hover:underline">Forgot Password?</a>
+                        </div>
                     </div>
-                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                    <button type="submit" className="bg-gray-700 hover:bg-gray-900 text-white font-semibold rounded-md py-2 px-4 w-full cursor-pointer">Login</button>
                 </form>
-
+                <div className="mt-6 text-gray-900 text-center">
+                    <a href="#" className="hover:underline">Sign up Here</a>
+                </div>
             </div>
         </div>
+
     )
 }

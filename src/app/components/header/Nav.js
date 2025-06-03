@@ -4,7 +4,12 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 
-export default function Nav() {
+
+export default function Nav({
+    NormalLink = "text-gray-900",
+    ActiveLink = "text-orange-400",
+    HoverLink = "hover:text-orange-400"
+}) {
     const pathName = usePathname();
 
     // console.log("check path name", pathName);
@@ -25,6 +30,7 @@ export default function Nav() {
         // { name: "About", href: "/company/about-us" },
         { name: "Services", href: "#" },
         { name: "Blog", href: "/blog" },
+        { name: "News", href: "/news" },
         { name: "Contact", href: "#" },
     ]
     return (
@@ -36,7 +42,7 @@ export default function Nav() {
                     console.log("check path name", pathName);
                     return (
                         <Menu as="div" className="relative inline-block text-left" key={link.name}>
-                            <MenuButton className={`inline-flex items-center gap-2 rounded-md  px-3 py-2 text-md text-gray-700 font-light  hover:text-orange-400 cursor-pointer ${isActive ? "text-orange-400" : "text-gray-700"}`}>
+                            <MenuButton className={`inline-flex items-center gap-2 rounded-md  px-3 py-2 text-md  font-light   cursor-pointer ${HoverLink} ${isActive ? "text-orange-400" : NormalLink}`}>
                                 {link.name}
                             </MenuButton>
                             <MenuItems
@@ -48,7 +54,7 @@ export default function Nav() {
                                         {({ active }) => (
                                             <Link
                                                 href={item.href}
-                                                className={`block px-4 py-2 text-sm ${active ? 'bg-gray-100 text-gray-900' : 'text-gray-700'
+                                                className={`block px-4 py-2 text-sm ${active ? ' text-gray-900' : 'text-gray-700'
                                                     }`}
                                             >
                                                 {item.name}
@@ -65,8 +71,8 @@ export default function Nav() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className={`rounded-md px-3 py-2 text-md  text-gray-800 font-light hover:text-orange-400
-                            ${isActive ? "text-orange-400" : "text-gray-800"}`}
+                            className={`rounded-md px-3 py-2 text-md   font-light ${HoverLink}
+                            ${isActive ? ActiveLink : NormalLink}`}
                         >
                             {link.name}
                         </Link>
@@ -81,3 +87,9 @@ export default function Nav() {
         </div>
     )
 }
+
+// Nav.propTypes = {
+//     NormalLink: "bg-gray-900",
+//     ActiveLink: "text-orange-400",
+//     HoverLink: "hover:text-orange-400",
+// }

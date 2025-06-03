@@ -1,40 +1,32 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import BlogComp from './components/BlogComp';
-import ProductPlaceholder from '../components/productcomp/ProductPlaceholder';
-import BlogSkeleton from './components/BlogSkeleton';
-import BlogDetails from './components/BlogDetails';
-import axios from 'axios';
+import BlogComp from '../blog/components/BlogComp';
+import BlogSkeleton from '../blog/components/BlogSkeleton';
+import BlogDetails from '../blog/components/BlogDetails';
 
-export default function Blog() {
+export default function News() {
     const [blogData, setBlogData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showDrawer, setShowDrawer] = useState(false);
 
-    const API_KEY = 'AIzaSyB_IoqcafvCYpVqV3ZWz5FRBhaCuSqDHDs';
-
     useEffect(() => {
         const blogData = () => {
             setLoading(true);
-            axios.get(`https://www.googleapis.com/blogger/v3/blogs/2399953/posts?key=${API_KEY}`)
-                .then(res => {
-                    console.log("Blog data", res.data);
-                })
-            // fetch(`https://www.googleapis.com/blogger/v3/blogs/2399953?key=${API_KEY}`)
-            //     .then(res => res.json())
-            //     .then(data => {
+            fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=8a7dce9fdfcc4b799cee94e482e6b104')
+                .then(res => res.json())
+                .then(data => {
 
-            //         setBlogData(data.articles);
-            //         setTimeout(() => {
-            //             setLoading(false);
-            //         }, 1500);
-            //     })
+                    setBlogData(data.articles);
+                    setTimeout(() => {
+                        setLoading(false);
+                    }, 1500);
+                })
         }
         blogData();
     }, [])
     console.log("Blog data", blogData);
 
-    const handleShowDrawer = () => {
+    const handleShowDrawer = (id) => {
         fetch(`https://newsapi.org/v2/everything?q=${id}&apiKey=8a7dce9fdfcc4b799cee94e482e6b104`)
             .then(res => res.json())
             .then(data => {
@@ -45,7 +37,7 @@ export default function Blog() {
 
     return (
         <div className="w-full lg:container mx-auto px-4 lg:px-8 py-8">
-            <h2 className="text-3xl font-bold text-black">Blog</h2>
+            <h2 className="text-3xl font-bold text-black">News</h2>
 
 
 

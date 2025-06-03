@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Banner() {
     return (
-        <div className='h-[calc(100vh-96px)] xl:h-[800px] bg-yellow-900 relative flex justify-center items-center'>
+        <div className='h-[calc(100vh-96px)] xl:h-[830px] bg-yellow-900 relative flex justify-center items-center'>
             <div className='relative z-10 text-center'>
                 <h2 className='text-md font-bold text-white uppercase'>Welcome to magical space</h2>
                 <h1 className='text-white text-4xl w-5/6 mt-2 lg:max-w-8/12 mx-auto font-normal lg:leading-[70px]'>Create A Dreamy Room For Your Little One</h1>

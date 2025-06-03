@@ -11,7 +11,7 @@ export default function ProductComp({ id, prodName, prodPrice, prodImage, prodHo
     // const title = prodName.split(' ').join('_');
     return (
         <div className='cursor-pointer'>
-            <div className='bg-gray-100 mb-4 relative group'>
+            <div className='border-1 border-gray-300 rounded-lg bg-white mb-4 relative group'>
                 <div className='relative group/image'>
                 <Link href={`/product/${id}`}><img
                         src={prodImage}
@@ -28,13 +28,13 @@ export default function ProductComp({ id, prodName, prodPrice, prodImage, prodHo
                         className='w-full h-96 object-cover absolute top-0 left-0 opacity-0 group-hover/image:opacity-100 group-hover/image:roate-0 transition duration-300'
                     /></Link>
                 </div>
-                <button className='bg-white w-10 h-10 flex items-center justify-center absolute top-4 right-4 opacity-0 -translate-y-4 group-hover:opacity-100 transition duration-300 group-hover:translate-0 hover:bg-orange-500 hover:text-white cursor-pointer'>
+                <button className='border-1 border-gray-300 rounded-sm bg-white w-10 h-10 flex items-center justify-center absolute top-4 right-4 opacity-0 -translate-y-4 group-hover:opacity-100 transition duration-300 group-hover:translate-0 hover:bg-orange-500 hover:text-white cursor-pointer'>
                     <FontAwesomeIcon icon={faHeart} />
                 </button>
-                <button className='bg-white w-10 h-10 flex items-center justify-center absolute top-16 right-4 opacity-0 -translate-y-4 group-hover:opacity-100 transition duration-300 delay-100 group-hover:translate-0 hover:bg-orange-500 hover:text-white cursor-pointer'>
+                <button className='border-1 border-gray-300 rounded-sm bg-white w-10 h-10 flex items-center justify-center absolute top-16 right-4 opacity-0 -translate-y-4 group-hover:opacity-100 transition duration-300 delay-100 group-hover:translate-0 hover:bg-orange-500 hover:text-white cursor-pointer'>
                     <Link href={`/product/${id}`}><FontAwesomeIcon icon={faEye} /></Link>
                 </button>
-                <button className='bg-white w-10 h-10 flex items-center justify-center absolute top-28 right-4 opacity-0 -translate-y-4 group-hover:opacity-100 transition duration-300 delay-150 group-hover:translate-0 hover:bg-orange-500 hover:text-white cursor-pointer'>
+                <button className='border-1 border-gray-300 rounded-sm bg-white w-10 h-10 flex items-center justify-center absolute top-28 right-4 opacity-0 -translate-y-4 group-hover:opacity-100 transition duration-300 delay-150 group-hover:translate-0 hover:bg-orange-500 hover:text-white cursor-pointer'>
                     <FontAwesomeIcon icon={faCartShopping} />
                 </button>
             </div>
