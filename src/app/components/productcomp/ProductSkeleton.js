@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function ProductSkeleton() {
     return (
-        <div className='grid grid-cols-4 gap-4 pt-10'>
+        <div className='grid grid-cols-4 gap-4 pb-4'>
             {Array.from({ length: 12 }, (_, index) => (
                 <div className='cursor-pointer'>
                     <div className='border-1 border-gray-300 rounded-lg bg-white mb-4 relative group'>

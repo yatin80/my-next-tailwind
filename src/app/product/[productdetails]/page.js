@@ -22,7 +22,7 @@ export default function ProductDetails() {
     console.log("check params", params);
 
 
-    
+
 
     const router = useRouter();
 
@@ -44,7 +44,7 @@ export default function ProductDetails() {
     return (
         <div className="w-full lg:container mx-auto px-4 lg:px-8 py-8">
             <button className='mb-6 border-1 border-black text-black px-3 py-2 cursor-pointer hover:bg-black hover:text-white' onClick={() => router.back()}>
-                <FontAwesomeIcon icon={faArrowLeft} /> Go Back
+                <FontAwesomeIcon icon={faArrowLeft} className='mr-1' /> Go Back
             </button>
             <div className='grid grid-cols-1 lg:grid-cols-7 gap-10'>
                 <div className='border-1 border-gray-300 col-span-4 relative'>

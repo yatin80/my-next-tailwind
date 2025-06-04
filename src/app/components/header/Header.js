@@ -37,13 +37,14 @@ export default function Header() {
 
     // }, [])
 
-    const isUp = useScrollThread(100);
+    const isUp = useScrollThread(200);
 
     console.log(isUp);
 
     return (
         <>
             {!isAuthPage && (
+                // <header className={`bg-white transition-all duration-300 ${isUp ? 'fixed top-0 left-0 right-0 z-50 w-full' : ''}`}>
                 <header className={`bg-white transition-all duration-300 ${isUp ? 'fixed top-0 left-0 right-0 z-50 w-full' : ''}`}>
                     <div className='bg-black text-white p-1.5 text-center text-sm'>
                         Cozy, cute, and safe kids’ furniture! Explore Now!

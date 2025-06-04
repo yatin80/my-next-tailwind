@@ -18,7 +18,7 @@ export default function Nav({
     const links = [
         { name: "Home", href: "/" },
         { name: "Shop", href: "/product" },
-        { name: "Collection", href: "#" },
+        { name: "Collection", href: "/collection" },
         {
             name: "Company",
             dropdown: [

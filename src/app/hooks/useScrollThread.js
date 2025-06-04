@@ -16,7 +16,7 @@ export default function useScrollThread(scrollThred = 100) {
     useEffect(() => {
 
         const handleScroll = () => {
-            if (window.scrollY > 100) {
+            if (window.scrollY > scrollThred) {
                 setIsScrolled(true)
             } else {
                 setIsScrolled(false)

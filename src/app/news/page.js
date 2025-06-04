@@ -21,6 +21,9 @@ export default function News() {
                         setLoading(false);
                     }, 1500);
                 })
+                .catch(error => {
+                    console.error('Error fetching news:', error);
+                });
         }
         blogData();
     }, [])
@@ -54,13 +57,13 @@ export default function News() {
 
 
             {loading ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-8">
+                <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 gap-4 mt-8">
                     {Array.from({ length: blogData.length }).map((_, index) => (
                         <BlogSkeleton key={index} />
                     ))}
                 </div>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-8">
+                <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 gap-4 mt-8">
                     {blogData.map((item) => (
                         <BlogComp key={item.title} title={item.title} urlToImage={item.urlToImage} description={item.description} author={item.author} publishedAt={item.publishedAt} source={item.source.name} handleShowDrawer={handleShowDrawer} />
                     ))}

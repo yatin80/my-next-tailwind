@@ -5,11 +5,15 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import BlogSkeleton from '../blog/components/BlogSkeleton';
 import ProductSkeleton from '../components/productcomp/ProductSkeleton';
 
+
 export default function Product() {
     const [prodData, setProdData] = useState([]);
     const [page, setPage] = useState(0);
     const [hasMore, setHasMore] = useState(true);
     const LIMIT = 12;
+
+    const [searchItem, setSearchItem] = useState('');
+    const [filterProducts, setFilterProducts] = useState([]);
 
     const fetchProducts = async () => {
         try {
@@ -37,9 +41,14 @@ export default function Product() {
     //     </div>
     // ));
 
+
+
+  
+
     return (
         <div className="w-full lg:container mx-auto px-4 lg:px-8 py-8">
             <h2 className="text-3xl font-bold text-black">Shop</h2>
+           
 
             <InfiniteScroll
                 dataLength={prodData.length}
@@ -48,7 +57,7 @@ export default function Product() {
                 loader={<ProductSkeleton />}
                 endMessage={<p className="text-center py-4">No more products</p>}
             >
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pt-10">
                     {prodData.map((item) => (
                         <ProductComp
                             key={item.id}

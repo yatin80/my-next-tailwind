@@ -56,7 +56,7 @@ export default function SignIn() {
             <div className="w-2/3 h-screen hidden lg:block p-3">
                 <img src="https://images.pexels.com/photos/6956800/pexels-photo-6956800.jpeg" alt="Placeholder Image" className="object-cover w-full h-full rounded-lg" />
             </div>
-            <div className="lg:p-14 md:p-14 sm:20 p-8 w-full lg:w-2/6">
+            <div className="lg:p-16 md:p-16 sm:20 p-8 w-full lg:w-2/6">
             <Link href="/" className='mb-6 inline-block border-1 border-black text-black px-3 py-2 cursor-pointer hover:bg-black hover:text-white' >
                 <FontAwesomeIcon icon={faHome} /> 
             </Link>

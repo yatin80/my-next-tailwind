@@ -199,7 +199,7 @@ export default function Home() {
       <div className="py-25 px-7.5">
         <div className="w-full lg:w-2/3 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-7.5  items-center">
 
-          
+          <div>
             <div className="relative group w-full lg:w-[460px] h-[575] after:absolute after:w-24 lg:after:w-40 after:h-24 lg:after:h-40 after:bg-orange-100 after:-top-5 lg:after:-top-18 after:-left-4 lg:after:-left-18 after:rounded-full after:z-0 -rotate-3 hover:rotate-0 transition duration-300">
               <Link href={"#"} className="relative overflow-hidden z-10">
                 <Image
@@ -213,7 +213,7 @@ export default function Home() {
               </Link>
 
             </div>
-         
+          </div>
           <div className="max-w-[300px]">
             <h2 className="text-3xl">Beds & Décor</h2>
             <p className="text-gray-600 mt-4.5">Add a touch of magic with charming wall art, rugs, lighting, and personalized decorations that make every child’s space feel special and inspiring</p>
@@ -222,7 +222,7 @@ export default function Home() {
 
       </div>
 
-      <div className="p-5 bg-gray-300 w-full">
+      <div className="p-5 bg-orange-100 w-full">
         <marquee className="text-gray-700 text-2xl">“The personalized décor made our son’s room extra special—amazing craftsmanship!” -  Linda</marquee>
       </div>
 
